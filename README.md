@@ -7,6 +7,13 @@
 
 ## 실행 방법
 
-1. 운영체제별 
+### HardwareSimulator 실행
+tools 내의 HardwareSimulator 실행
 - 윈도우 >> `HardwareSimulator.bat`
 - 맥 >> `HardwareSimulator.sh`
+
+File - Load Chip - hdl 파일 선택
+
+File - Load Script - tst 파일 선택
+
+F5 -> Run
