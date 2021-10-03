@@ -42,5 +42,27 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-   // Put you code here:
+   
+    // nx
+    Mux16(a=x, b=false, sel=zx, out=o1);
+    Not16(in=o1, out=noto1);
+    Mux16(a=o1, b=noto1, sel=nx, out=xout);
+
+    //ny
+    Mux16(a=y, b=false, sel=zy, out=o2);
+    Not16(in=o2, out=noto2);
+    Mux16(a=o2, b=noto2, sel=ny, out=yout);
+
+    // f연산
+    Add16(a=xout, b=yout, out=addxy);
+    And16(a=xout, b=yout, out=andxy);
+    //add or and 정의해놓고 멀티플렉서로 선택함
+    Mux16(a=addxy, b=andxy, sel=f, out=addorand);
+
+    //no연산
+    Not16(in=addorand, out=notaddorand);
+    //위와 같이 not 구현해놓고 not연산에 해당하는 값을 멀티플렉서로 선택함
+    Mux16(a=addorand, b=notaddorand, sel=no, out=out);
+   
+
 }
