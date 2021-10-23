@@ -18,8 +18,8 @@ CHIP FullAdder {
     And(a=b, b=c, out=o2);
     Or(a=o1, b=o2, out=o3);
     And(a=a, b=c, out=o4);
-    Or(a=o3, b=o4, out=carry);
+    Or(a=o3, b=o4, out=carry); // Carry -> bc + ac + ab
 
     Xor(a=a, b=b, out=o5);
-    Xor(a=o5, b=c, out=sum);
+    Xor(a=o5, b=c, out=sum); // Sum -> a nor b nor c
 }
