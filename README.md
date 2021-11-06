@@ -15,7 +15,7 @@ F5 -> Run
 
 각 논리게이트별 HDL 실습
 - [1장 - 불 논리](https://github.com/lsj8367/nand2tetris/blob/master/projects/01/bool.md)
-- 2장 - 불 연산
+- [2장 - 불 연산](https://lsj8367.github.io/cs/CS-alu/)
 - 3장. 순차 논리
 - 4장. 기계어
 - 5장. 컴퓨터 아키텍쳐
