@@ -43,33 +43,26 @@ CHIP ALU {
 
     PARTS:
    
-    // zx, zy
+    // nx
     Mux16(a=x, b=false, sel=zx, out=o1);
-    Mux16(a=y, b=false, sel=zy, out=o2);
-
-    //nx
     Not16(in=o1, out=noto1);
-    Mux16(a=o1, b=noto1, sel=nx, out=o3);
+    Mux16(a=o1, b=noto1, sel=nx, out=xout);
 
     //ny
+    Mux16(a=y, b=false, sel=zy, out=o2);
     Not16(in=o2, out=noto2);
-    Mux16(a=o2, b=noto2, sel=ny, out=o4);
+    Mux16(a=o2, b=noto2, sel=ny, out=yout);
 
     // f연산
-    And16(a=o3, b=o4, out=andxy);
-    Add16(a=o3, b=o4, out=addxy);
+    Add16(a=xout, b=yout, out=addxy);
+    And16(a=xout, b=yout, out=andxy);
     //add or and 정의해놓고 멀티플렉서로 선택함
-    Mux16(a=andxy, b=addxy, sel=f, out=result);
+    Mux16(a=addxy, b=andxy, sel=f, out=addorand);
 
     //no연산
-    Not16(in=result, out=notresult);
-
+    Not16(in=addorand, out=notaddorand);
     //위와 같이 not 구현해놓고 not연산에 해당하는 값을 멀티플렉서로 선택함
-    Mux16(a=result, b=notresult, sel=no, out=out, out[0..7]=front, out[8..15]=back, out[15]=ng);
+    Mux16(a=addorand, b=notaddorand, sel=no, out=out);
    
-    Or8Way(in=front, out=frontout);
-    Or8Way(in=back, out=backout);
-    Or(a=frontout, b=backout, out=orout);
-    Not(in=orout, out=zr);
 
 }
