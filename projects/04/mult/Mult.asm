@@ -34,10 +34,10 @@
     M=D+M //R2 = R1 + R2
 
     @i
-    M=M+1
+    M=M+1 // i++
 
     @LOOP
-    0;JMP
+    0;JMP // continue loop
 
 (END)
     @END
