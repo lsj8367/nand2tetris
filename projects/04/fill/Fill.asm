@@ -12,3 +12,30 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+(LOOP)
+    @KBD
+    D=M // 키보드 입력값을 받는다.
+
+    @BLACK
+    D;JGT // 입력값을 받아온 D가 D > 0 일경우 (BLACK)으로 점프
+
+    @WHITE
+    D;JEQ // 입력값을 받아온 D가 입력받지 못한경우 (D == 0) (WHITE)로 점프
+
+    @LOOP
+    0;JMP
+
+(BLACK) //스크린을 검은색으로 처리
+    @SCREEN
+    M=-1 // 0xFFFF
+
+    @LOOP
+    0;JMP
+
+(WHITE) // 스크린을 흰색으로 처리
+    @SCREEN
+    M=0
+
+    @LOOP
+    0;JMP
