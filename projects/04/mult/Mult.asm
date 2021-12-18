@@ -25,7 +25,7 @@
     D=D-M // D=i-R0
 
     @END
-    D;JEQ // if i-R0 >= goto END
+    D;JEQ // if i == R0 goto END
 
     @1
     D=M // D=R1
